@@ -85,7 +85,7 @@ func main() {
 	case "csv":
 		jq = gojsonq.New(gojsonq.SetDecoder(&csvDecoder{})).JSONString(data)
 	case "json":
-		jq.JSONString(data)
+		jq = gojsonq.New().JSONString(data)
 	}
 
 	if command != "" {
