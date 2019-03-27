@@ -75,15 +75,15 @@ func main() {
 		return
 	}
 	data := readFromStdin()
-	jq := gojsonq.New()
+	jq := &gojsonq.JSONQ{}
 
 	switch defaultDataType {
 	case "xml":
-		fmt.Println("implement xml decoder")
+		jq = gojsonq.New(gojsonq.SetDecoder(&xmlDecoder{})).JSONString(data)
 	case "yml":
-		fmt.Println("implement yml decoder")
+		jq = gojsonq.New(gojsonq.SetDecoder(&yamlDecoder{})).JSONString(data)
 	case "csv":
-		fmt.Println("implement csv decoder")
+		jq = gojsonq.New(gojsonq.SetDecoder(&csvDecoder{})).JSONString(data)
 	case "json":
 		jq.JSONString(data)
 	}
