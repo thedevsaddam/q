@@ -80,7 +80,7 @@ func main() {
 	switch defaultDataType {
 	case "xml":
 		jq = gojsonq.New(gojsonq.SetDecoder(&xmlDecoder{})).JSONString(data)
-	case "yml":
+	case "yml", "yaml":
 		jq = gojsonq.New(gojsonq.SetDecoder(&yamlDecoder{})).JSONString(data)
 	case "csv":
 		jq = gojsonq.New(gojsonq.SetDecoder(&csvDecoder{})).JSONString(data)
