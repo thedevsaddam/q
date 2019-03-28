@@ -62,13 +62,14 @@ func checkFlags() {
 		ww := strings.Split(where, ",")
 		for _, w := range ww {
 			if w != "" {
-				kk := strings.Split(w, "=") //todo: split with proper condition
+				opt := getOptString(w)
+				kk := strings.Split(w, opt) //todo: split with proper condition
 				if strings.Contains(kk[1], "int:") {
 					v, err := strconv.Atoi(strings.TrimPrefix(kk[1], "int:"))
 					if err != nil {
 						panic(err)
 					}
-					jq.Where(kk[0], "=", v)
+					jq.Where(kk[0], opt, v)
 				}
 			}
 		}
@@ -78,13 +79,14 @@ func checkFlags() {
 		ww := strings.Split(orWhere, ",")
 		for _, w := range ww {
 			if w != "" {
-				kk := strings.Split(w, "=") //todo: split with proper condition
+				opt := getOptString(w)
+				kk := strings.Split(w, opt) //todo: split with proper condition
 				if strings.Contains(kk[1], "int:") {
 					v, err := strconv.Atoi(strings.TrimPrefix(kk[1], "int:"))
 					if err != nil {
 						panic(err)
 					}
-					jq.OrWhere(kk[0], "=", v)
+					jq.OrWhere(kk[0], opt, v)
 				}
 			}
 		}
