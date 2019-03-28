@@ -64,12 +64,13 @@ func checkFlags() {
 			if w != "" {
 				opt := getOptString(w)
 				kk := strings.Split(w, opt) //todo: split with proper condition
-				if strings.Contains(kk[1], "int:") {
-					v, err := strconv.Atoi(strings.TrimPrefix(kk[1], "int:"))
-					if err != nil {
-						panic(err)
+				for _, dt := range dtypes {
+					if strings.Contains(kk[1], dt) {
+						v, err := strconv.Atoi(strings.TrimPrefix(kk[1], dt))
+						panicOnError(err)
+						jq.Where(kk[0], opt, v)
+						break
 					}
-					jq.Where(kk[0], opt, v)
 				}
 			}
 		}
@@ -81,12 +82,13 @@ func checkFlags() {
 			if w != "" {
 				opt := getOptString(w)
 				kk := strings.Split(w, opt) //todo: split with proper condition
-				if strings.Contains(kk[1], "int:") {
-					v, err := strconv.Atoi(strings.TrimPrefix(kk[1], "int:"))
-					if err != nil {
-						panic(err)
+				for _, dt := range dtypes {
+					if strings.Contains(kk[1], dt) {
+						v, err := strconv.Atoi(strings.TrimPrefix(kk[1], dt))
+						panicOnError(err)
+						jq.OrWhere(kk[0], opt, v)
+						break
 					}
-					jq.OrWhere(kk[0], opt, v)
 				}
 			}
 		}

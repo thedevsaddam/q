@@ -14,6 +14,10 @@ const (
 	ne  = "!="
 )
 
+var (
+	dtypes = []string{"int:", "float:"}
+)
+
 func getOptString(s string) string {
 	opt := ""
 	if matched, err := regexp.MatchString(fmt.Sprintf(".%s.", eq), s); matched {
