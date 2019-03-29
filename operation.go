@@ -6,43 +6,38 @@ import (
 )
 
 const (
-	eq  = "="
-	gt  = ">"
-	gte = ">="
-	lt  = "<"
-	lte = "<="
-	ne  = "!="
+	eq            = "equals"
+	gt            = "greater_than"
+	gte           = "greater_than_or_equals"
+	lt            = "less_than"
+	lte           = "less_than_or_equals"
+	ne            = "not_equals"
+	dataTypeInt   = "int:"
+	dataTypeFloat = "float:"
 )
 
 var (
-	dtypes = []string{"int:", "float:"}
+	dtypes     []string
+	operations = make(map[string]string)
 )
+
+func init() {
+	dtypes = []string{dataTypeInt, dataTypeFloat}
+	operations[eq] = "="
+	operations[gt] = ">"
+	operations[gte] = ">="
+	operations[lt] = "<"
+	operations[lte] = "<="
+	operations[ne] = "!="
+}
 
 func getOptString(s string) string {
 	opt := ""
-	if matched, err := regexp.MatchString(fmt.Sprintf(".%s.", eq), s); matched {
-		panicOnError(err)
-		opt = eq
-	}
-	if matched, err := regexp.MatchString(fmt.Sprintf(".%s.", gt), s); matched {
-		panicOnError(err)
-		opt = gt
-	}
-	if matched, err := regexp.MatchString(fmt.Sprintf(".%s.", gte), s); matched {
-		panicOnError(err)
-		opt = gte
-	}
-	if matched, err := regexp.MatchString(fmt.Sprintf(".%s.", lt), s); matched {
-		panicOnError(err)
-		opt = lt
-	}
-	if matched, err := regexp.MatchString(fmt.Sprintf(".%s.", lte), s); matched {
-		panicOnError(err)
-		opt = lte
-	}
-	if matched, err := regexp.MatchString(fmt.Sprintf(".%s.", ne), s); matched {
-		panicOnError(err)
-		opt = ne
+	for _, o := range operations {
+		if matched, err := regexp.MatchString(fmt.Sprintf(".%s.", o), s); matched {
+			panicOnError(err)
+			opt = o
+		}
 	}
 	return opt
 }

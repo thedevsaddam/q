@@ -7,6 +7,10 @@ import (
 	"os"
 )
 
+var (
+	output interface{}
+)
+
 // readFromStdin reads the data to feed on
 func readFromStdin() string {
 	var data []byte

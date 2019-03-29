@@ -10,10 +10,6 @@ var (
 	jq *gojsonq.JSONQ
 )
 
-func init() {
-	flagInit() // Initializing the flags
-}
-
 func main() {
 
 	if versionFlagProvided() {

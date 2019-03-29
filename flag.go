@@ -16,13 +16,11 @@ var (
 	from            string
 	where           string
 	orWhere         string
-	output          interface{}
 	aggregateColumn string
 	version         bool
 )
 
-// flagInit initializes the flags
-func flagInit() {
+func init() {
 	flag.StringVar(&defaultDataType, "type", "json", "data type: json, yml, xml, yml, csv")
 	flag.StringVar(&from, "from", "", "from can be: items, users")
 	flag.StringVar(&where, "where", "", "where would be the query where clause: name=macbook, price>1100")
