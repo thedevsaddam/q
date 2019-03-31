@@ -10,6 +10,7 @@ import (
 
 var (
 	defaultDataType string
+	separator       string
 	find            string
 	command         string
 	columns         string
@@ -22,6 +23,7 @@ var (
 
 func init() {
 	flag.StringVar(&defaultDataType, "type", "json", "data type: json, yml, xml, yml, csv")
+	flag.StringVar(&separator, "separator", ".", "separator can be: . / -> / --> / => etc. Default is DOT[.]")
 	flag.StringVar(&from, "from", "", "from can be: items, users")
 	flag.StringVar(&where, "where", "", "where would be the query where clause: name=macbook, price>1100")
 	flag.StringVar(&orWhere, "orWhere", "", "orWhere would be the query orWhere clause: name=macbook, price>1100")
@@ -140,13 +142,13 @@ func checkDataType() {
 
 	switch defaultDataType {
 	case "xml":
-		jq = gojsonq.New(gojsonq.SetDecoder(&xmlDecoder{})).JSONString(data)
+		jq = gojsonq.New(gojsonq.SetDecoder(&xmlDecoder{}), gojsonq.SetSeparator(separator)).JSONString(data)
 	case "yml", "yaml":
-		jq = gojsonq.New(gojsonq.SetDecoder(&yamlDecoder{})).JSONString(data)
+		jq = gojsonq.New(gojsonq.SetDecoder(&yamlDecoder{}), gojsonq.SetSeparator(separator)).JSONString(data)
 	case "csv":
-		jq = gojsonq.New(gojsonq.SetDecoder(&csvDecoder{})).JSONString(data)
+		jq = gojsonq.New(gojsonq.SetDecoder(&csvDecoder{}), gojsonq.SetSeparator(separator)).JSONString(data)
 	case "json":
-		jq = gojsonq.New().JSONString(data)
+		jq = gojsonq.New(gojsonq.SetSeparator(separator)).JSONString(data)
 	}
 }
 
