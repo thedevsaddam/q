@@ -138,9 +138,13 @@ func checkCommands() {
 }
 
 // checkDataType checks for the type of the data to feed on
-func checkDataType() {
+func checkDataType() bool {
 
 	data := readFromStdin()
+
+	if data == "" {
+		return false
+	}
 
 	switch defaultDataType {
 	case "xml":
@@ -152,6 +156,7 @@ func checkDataType() {
 	case "json":
 		jq = gojsonq.New(gojsonq.SetSeparator(separator)).JSONString(data)
 	}
+	return true
 }
 
 func versionFlagProvided() bool {

@@ -17,7 +17,9 @@ func main() {
 		return
 	}
 
-	checkDataType() // Checking for the datatype feeded, i.e: json/xml/yaml/csv
+	if !checkDataType() { // Checking for the datatype feeded, i.e: json/xml/yaml/csv, returns true if data provided
+		return
+	}
 
 	checkFlags() // Checking for the flags provided by the user
 

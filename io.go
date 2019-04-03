@@ -14,9 +14,14 @@ var (
 // readFromStdin reads the data to feed on
 func readFromStdin() string {
 	var data []byte
-	data, err := ioutil.ReadAll(os.Stdin)
-	if err != nil {
-		panic(err)
+	var err error
+	stat, _ := os.Stdin.Stat() // for checking if data provided from stdin
+
+	if stat.Size() > 0 { // if data provided on stdin
+		data, err = ioutil.ReadAll(os.Stdin)
+		if err != nil {
+			panic(err)
+		}
 	}
 	return string(data)
 }
