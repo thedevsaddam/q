@@ -18,6 +18,7 @@ var (
 	where           string
 	orWhere         string
 	aggregateColumn string
+	pretty          bool
 	version         bool
 )
 
@@ -30,6 +31,7 @@ func init() {
 	flag.StringVar(&command, "command", "", "command can be: first, last, count, avg etc")
 	flag.StringVar(&find, "find", "", `find works like: --find="items[0].price"`)
 	flag.StringVar(&columns, "columns", "*", "columns can be: * or columnA,columnB")
+	flag.BoolVar(&pretty, "pretty", false, "print formatted output")
 	flag.BoolVar(&version, "version", false, "print version information")
 	flag.Parse()
 }

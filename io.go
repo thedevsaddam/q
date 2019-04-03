@@ -24,7 +24,9 @@ func readFromStdin() string {
 // prepareStdOutput prepares the standard output to show the result of the query
 func prepareStdOutput() {
 	enc := json.NewEncoder(os.Stdout)
-	enc.SetIndent("", "\t")
+	if pretty {
+		enc.SetIndent("", "\t")
+	}
 	if err := enc.Encode(output); err != nil {
 		fmt.Println(err)
 		return
