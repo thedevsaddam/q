@@ -36,4 +36,5 @@ func prepareStdOutput() {
 		fmt.Println(err)
 		return
 	}
+
 }

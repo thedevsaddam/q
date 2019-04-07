@@ -6,14 +6,15 @@ import (
 )
 
 const (
-	eq            = "equals"
-	gt            = "greater_than"
-	gte           = "greater_than_or_equals"
-	lt            = "less_than"
-	lte           = "less_than_or_equals"
-	ne            = "not_equals"
-	dataTypeInt   = "int:"
-	dataTypeFloat = "float:"
+	eq             = "equals"
+	gt             = "greater_than"
+	gte            = "greater_than_or_equals"
+	lt             = "less_than"
+	lte            = "less_than_or_equals"
+	ne             = "not_equals"
+	dataTypeInt    = "int:"
+	dataTypeFloat  = "float:"
+	dataTypeString = "string:" //for string
 )
 
 var (

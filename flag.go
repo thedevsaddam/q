@@ -66,12 +66,29 @@ func checkFlags() {
 			if w != "" {
 				opt := getOptString(w)
 				kk := strings.Split(w, opt) //todo: split with proper condition
+				isStringVal := true
 				for _, dt := range dtypes {
 					if strings.Contains(kk[1], dt) {
 						v, err := strconv.Atoi(strings.TrimPrefix(kk[1], dt))
 						panicOnError(err)
 						jq.Where(kk[0], opt, v)
+						isStringVal = false
 						break
+					}
+				}
+				if isStringVal {
+					sw := strings.HasPrefix(kk[1], "%")
+					ew := strings.HasSuffix(kk[1], "%")
+					kk[1] = trimLeadingTrailingPercents(kk[1])
+					if sw && ew {
+						jq.WhereContains(kk[0], kk[1])
+					} else if sw && !ew {
+						jq.WhereStartsWith(kk[0], kk[1])
+					} else if !sw && ew {
+						jq.WhereEndsWith(kk[0], kk[1])
+					} else {
+						jq.Where(kk[0], opt, kk[1])
+
 					}
 				}
 			}
