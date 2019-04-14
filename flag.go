@@ -32,10 +32,10 @@ func init() {
 	flag.StringVar(&where, "where", "", "where would be the query where clause: name=macbook, price>1100")
 	flag.StringVar(&orWhere, "orWhere", "", "orWhere would be the query orWhere clause: name=macbook, price>1100")
 	flag.StringVar(&command, "command", "", "command can be: first, last, count, avg etc")
-	flag.StringVar(&find, "find", "", `find works like: --find="items[0].price"`)
+	flag.StringVar(&find, "find", "", `find works like: -find="items[0].price"`)
 	flag.StringVar(&columns, "columns", "*", "columns can be: * or columnA,columnB")
-	flag.StringVar(&sort, "sort", "", `sort accept argument: --sort="asc/desc"`)
-	flag.StringVar(&sortBy, "sortBy", "", `sort accept argument: --sortBy="price:desc"`)
+	flag.StringVar(&sort, "sort", "", `sort accept argument: -sort="asc/desc"`)
+	flag.StringVar(&sortBy, "sortBy", "", `sort accept argument: -sortBy="price:desc"`)
 	flag.BoolVar(&pretty, "pretty", false, "print formatted output")
 	flag.BoolVar(&version, "version", false, "print version information")
 	flag.Parse()
@@ -65,7 +65,7 @@ func checkFlags() {
 		jq.Select(a...)
 	}
 
-	if where != "" {
+	if where != "" { // FIXME: handle null query; -where="id!=null"
 		ww := strings.Split(where, ",")
 		for _, w := range ww {
 			if w != "" {
