@@ -19,6 +19,8 @@ var (
 	where           string
 	orWhere         string
 	aggregateColumn string
+	sort            string
+	sortBy          string
 	pretty          bool
 	version         bool
 )
@@ -32,6 +34,8 @@ func init() {
 	flag.StringVar(&command, "command", "", "command can be: first, last, count, avg etc")
 	flag.StringVar(&find, "find", "", `find works like: --find="items[0].price"`)
 	flag.StringVar(&columns, "columns", "*", "columns can be: * or columnA,columnB")
+	flag.StringVar(&sort, "sort", "asc", `sort accept argument: --sort="asc/desc"`)
+	flag.StringVar(&sortBy, "sortBy", "", `sort accept argument: --sortBy="price:desc"`)
 	flag.BoolVar(&pretty, "pretty", false, "print formatted output")
 	flag.BoolVar(&version, "version", false, "print version information")
 	flag.Parse()
@@ -111,6 +115,23 @@ func checkFlags() {
 					}
 				}
 			}
+		}
+	}
+
+	if sort != "" {
+		if sort == "asc" {
+			jq.Sort(sort)
+		} else {
+			jq.Sort("desc")
+		}
+	}
+
+	if sortBy != "" {
+		if strings.Contains(sortBy, ":") {
+			ss := strings.Split(sortBy, ":")
+			jq.SortBy(ss[0], ss[1])
+		} else {
+			jq.SortBy(sortBy)
 		}
 	}
 }
