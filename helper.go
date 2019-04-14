@@ -31,7 +31,7 @@ Query JSON, CSV, YML, XML data from commandline
 For more info visit: https://github.com/thedevsaddam/qcli
 `
 
-func panicOnError(err error) {
+func handleError(err error) {
 	if err != nil {
 		panic(err)
 	}

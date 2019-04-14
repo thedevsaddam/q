@@ -15,14 +15,13 @@ var (
 func readFromStdin() string {
 	var data []byte
 	var err error
-	stat, _ := os.Stdin.Stat() // for checking if data provided from stdin
+	stat, _ := os.Stdin.Stat()
 
-	if stat.Size() > 0 { // if data provided on stdin
+	if (stat.Mode() & os.ModeCharDevice) == 0 {
 		data, err = ioutil.ReadAll(os.Stdin)
-		if err != nil {
-			panic(err)
-		}
+		handleError(err)
 	}
+
 	return string(data)
 }
 

@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -70,7 +71,7 @@ func checkFlags() {
 				for _, dt := range dtypes {
 					if strings.Contains(kk[1], dt) {
 						v, err := strconv.Atoi(strings.TrimPrefix(kk[1], dt))
-						panicOnError(err)
+						handleError(err)
 						jq.Where(kk[0], opt, v)
 						isStringVal = false
 						break
@@ -104,7 +105,7 @@ func checkFlags() {
 				for _, dt := range dtypes {
 					if strings.Contains(kk[1], dt) {
 						v, err := strconv.Atoi(strings.TrimPrefix(kk[1], dt))
-						panicOnError(err)
+						handleError(err)
 						jq.OrWhere(kk[0], opt, v)
 						break
 					}
@@ -160,6 +161,7 @@ func setDecoder() bool {
 	data := readFromStdin()
 
 	if data == "" {
+		fmt.Println("Empty input!")
 		return false
 	}
 

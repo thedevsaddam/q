@@ -36,7 +36,7 @@ func getOptString(s string) string {
 	opt := ""
 	for _, o := range operations {
 		if matched, err := regexp.MatchString(fmt.Sprintf(".%s.", o), s); matched {
-			panicOnError(err)
+			handleError(err)
 			opt = o
 		}
 	}
