@@ -78,8 +78,8 @@ func checkFlags() {
 					}
 				}
 				if isStringVal {
-					sw := strings.HasPrefix(kk[1], "%")
-					ew := strings.HasSuffix(kk[1], "%")
+					sw := strings.HasSuffix(kk[1], "%")
+					ew := strings.HasPrefix(kk[1], "%")
 					kk[1] = trimLeadingTrailingPercents(kk[1])
 					if sw && ew {
 						jq.WhereContains(kk[0], kk[1])
