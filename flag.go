@@ -34,7 +34,7 @@ func init() {
 	flag.StringVar(&command, "command", "", "command can be: first, last, count, avg etc")
 	flag.StringVar(&find, "find", "", `find works like: --find="items[0].price"`)
 	flag.StringVar(&columns, "columns", "*", "columns can be: * or columnA,columnB")
-	flag.StringVar(&sort, "sort", "asc", `sort accept argument: --sort="asc/desc"`)
+	flag.StringVar(&sort, "sort", "", `sort accept argument: --sort="asc/desc"`)
 	flag.StringVar(&sortBy, "sortBy", "", `sort accept argument: --sortBy="price:desc"`)
 	flag.BoolVar(&pretty, "pretty", false, "print formatted output")
 	flag.BoolVar(&version, "version", false, "print version information")
@@ -134,6 +134,7 @@ func checkFlags() {
 			jq.SortBy(sortBy)
 		}
 	}
+
 }
 
 // checkCommands checks for any command provided by the user during query & takes action accordingly
