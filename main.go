@@ -17,7 +17,7 @@ func main() {
 		return
 	}
 
-	if !checkDataType() { // Checking for the datatype feeded, i.e: json/xml/yaml/csv, returns true if data provided
+	if !setDecoder() { // Checking for the datatype feeded, i.e: json/xml/yaml/csv, returns true if data provided
 		return
 	}
 

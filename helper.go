@@ -3,9 +3,6 @@ package main
 import "strings"
 
 const logo = `
-
-
-
                                         lllllll   iiii
                                         l:::::l  i::::i
                                         l:::::l   iiii

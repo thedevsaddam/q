@@ -154,8 +154,8 @@ func checkCommands() {
 	}
 }
 
-// checkDataType checks for the type of the data to feed on
-func checkDataType() bool {
+// setDecoder checks for the type of the data to feed on
+func setDecoder() bool {
 
 	data := readFromStdin()
 
