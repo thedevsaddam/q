@@ -21,8 +21,7 @@ func main() {
 		return
 	}
 
-	checkFlags() // Checking for the flags provided by the user
-
+	checkFlags()       // Checking for the flags provided by the user
 	checkCommands()    // checking for the commands provided by the user to query over
 	prepareStdOutput() // preparing the std output for the query result
 }

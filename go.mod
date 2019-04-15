@@ -1,4 +1,4 @@
-module github.com/thedevsaddam/qcli
+module github.com/thedevsaddam/q
 
 go 1.12
 
