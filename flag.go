@@ -166,6 +166,8 @@ func checkCommands() {
 		output = jq.Last()
 	case "count":
 		output = jq.Count()
+	case "pluck":
+		output = jq.Pluck(aggregateColumn)
 	case "avg":
 		if aggregateColumn != "" {
 			output = jq.Avg(aggregateColumn)
