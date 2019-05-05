@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 
@@ -22,6 +23,7 @@ var (
 	sort            string
 	sortBy          string
 	groupBy         string
+	limit           string
 	pretty          bool
 	version         bool
 )
@@ -38,6 +40,7 @@ func init() {
 	flag.StringVar(&sort, "sort", "", `sort accept argument: -sort="asc/desc"`)
 	flag.StringVar(&sortBy, "sortBy", "", `sort accept argument: -sortBy="price:desc"`)
 	flag.StringVar(&groupBy, "groupBy", "", `groupBy accept argument: -groupBy="category"`)
+	flag.StringVar(&limit, "limit", "", `limit accept argument: -limit="5"`)
 	flag.BoolVar(&pretty, "pretty", false, "print formatted output")
 	flag.BoolVar(&version, "version", false, "print version information")
 	flag.Parse()
@@ -139,6 +142,15 @@ func checkFlags() {
 
 	if groupBy != "" {
 		jq.GroupBy(groupBy)
+	}
+
+	if limit != "" {
+		l, err := strconv.Atoi(limit)
+		if err != nil {
+			log.Println("Invalid limit value:", err)
+			return
+		}
+		jq.Limit(l)
 	}
 
 }
