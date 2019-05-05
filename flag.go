@@ -24,6 +24,7 @@ var (
 	sortBy          string
 	groupBy         string
 	distinct        string
+	offset          string
 	limit           string
 	pretty          bool
 	version         bool
@@ -41,6 +42,7 @@ func init() {
 	flag.StringVar(&sort, "sort", "", `sort accept argument: -sort="asc/desc"`)
 	flag.StringVar(&sortBy, "sortBy", "", `sort accept argument: -sortBy="price:desc"`)
 	flag.StringVar(&groupBy, "groupBy", "", `groupBy accept argument: -groupBy="category"`)
+	flag.StringVar(&offset, "offset", "", `offset accept argument: -offset="5"`)
 	flag.StringVar(&limit, "limit", "", `limit accept argument: -limit="5"`)
 	flag.StringVar(&distinct, "distinct", "", `distinct accept argument: -distinct="category"`)
 	flag.BoolVar(&pretty, "pretty", false, "print formatted output")
@@ -144,6 +146,15 @@ func checkFlags() {
 
 	if groupBy != "" {
 		jq.GroupBy(groupBy)
+	}
+
+	if offset != "" {
+		o, err := strconv.Atoi(offset)
+		if err != nil {
+			log.Println("Invalid offset value:", err)
+			return
+		}
+		jq.Offset(o)
 	}
 
 	if limit != "" {
