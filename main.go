@@ -6,6 +6,32 @@ import (
 	"github.com/thedevsaddam/gojsonq"
 )
 
+const logo = `              
+                    
+     QQQQQQQQQ      
+   QQ:::::::::QQ    
+ QQ:::::::::::::QQ  
+Q:::::::QQQ:::::::Q 
+Q::::::O   Q::::::Q 
+Q:::::O     Q:::::Q 
+Q:::::O     Q:::::Q 
+Q:::::O     Q:::::Q 
+Q:::::O     Q:::::Q 
+Q:::::O     Q:::::Q 
+Q:::::O  QQQQ:::::Q 
+Q::::::O Q::::::::Q 
+Q:::::::QQ::::::::Q 
+ QQ::::::::::::::Q  
+   QQ:::::::::::Q   
+     QQQQQQQQ::::QQ 
+             Q:::::Q
+              QQQQQQ
+					
+
+Query JSON, CSV, YML, XML data from commandline
+For more info visit: https://github.com/thedevsaddam/qcli
+`
+
 var (
 	jq *gojsonq.JSONQ
 )
