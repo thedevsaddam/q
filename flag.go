@@ -23,6 +23,7 @@ var (
 	sort            string
 	sortBy          string
 	groupBy         string
+	distinct        string
 	limit           string
 	pretty          bool
 	version         bool
@@ -41,6 +42,7 @@ func init() {
 	flag.StringVar(&sortBy, "sortBy", "", `sort accept argument: -sortBy="price:desc"`)
 	flag.StringVar(&groupBy, "groupBy", "", `groupBy accept argument: -groupBy="category"`)
 	flag.StringVar(&limit, "limit", "", `limit accept argument: -limit="5"`)
+	flag.StringVar(&distinct, "distinct", "", `distinct accept argument: -distinct="category"`)
 	flag.BoolVar(&pretty, "pretty", false, "print formatted output")
 	flag.BoolVar(&version, "version", false, "print version information")
 	flag.Parse()
@@ -151,6 +153,10 @@ func checkFlags() {
 			return
 		}
 		jq.Limit(l)
+	}
+
+	if distinct != "" {
+		jq.Distinct(distinct)
 	}
 
 }
