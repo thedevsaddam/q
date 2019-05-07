@@ -21,6 +21,8 @@ github.com/stretchr/testify v1.3.0 h1:TivCn/peBQ7UY8ooIcPgZFpTNSz0Q2U6UrFlUfqbe0
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/thedevsaddam/gojsonq v2.2.0+incompatible h1:Fznhe6aY03/OD5jXSI4JChvF473bpUG0Kc+CxDLqFBU=
 github.com/thedevsaddam/gojsonq v2.2.0+incompatible/go.mod h1:RBcQaITThgJAAYKH7FNp2onYodRz8URfsuEGpAch0NA=
+github.com/thedevsaddam/gojsonq v2.2.1+incompatible h1:XVW6tZj665MJmpBzSX07IVjGc8nPw8tuPMoM8A6kPMk=
+github.com/thedevsaddam/gojsonq v2.2.1+incompatible/go.mod h1:RBcQaITThgJAAYKH7FNp2onYodRz8URfsuEGpAch0NA=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/net v0.0.0-20190327091125-710a502c58a2 h1:17UhVDrPb40BH5k6cyeb2V/7QlBNdo/a0+r0dtK+Utw=
 golang.org/x/net v0.0.0-20190327091125-710a502c58a2/go.mod h1:t9HGtf8HONx5eT2rtn7q6eTqICYqUVnKs3thJo3Qplg=
