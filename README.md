@@ -1,8 +1,12 @@
-# q
+q
+----------
+A command-line tool to query JSON/XML/YAML/CSV document
 
 ### Installation
+**For Mac**
 ```sh
-Coming soon!
+brew tap thedevsaddam/cli https://github.com/thedevsaddam/homebrew-cli.git                                                     
+brew install thedevsaddam/homebrew-cli/q
 ```
 
 
